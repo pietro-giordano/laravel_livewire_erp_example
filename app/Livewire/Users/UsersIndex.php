@@ -15,13 +15,9 @@ class UsersIndex extends Component
 
     public function delete(int $id)
     {
-        try {
-            User::destroy($id);
+        User::destroy($id);
 
-            return session()->flash('success', 'Dipendente eliminato con successo');
-        } catch (Exception $e) {
-            return session()->flash('error', $e->getMessage());
-        }
+        return session()->flash('success', 'Dipendente eliminato con successo');
     }
 
     public function mount()

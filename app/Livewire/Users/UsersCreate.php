@@ -5,6 +5,7 @@ namespace App\Livewire\Users;
 use App\Models\Role;
 use App\Models\User;
 use Exception;
+use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Attributes\Validate;
@@ -26,19 +27,15 @@ class UsersCreate extends Component
     {
         $this->validate();
 
-        try {
-            User::create([
-                'name' => $this->name,
-                'email' => $this->email,
-                'password' => Hash::make($this->password),
-                'role_id' => $this->role,
-            ]);
+        User::create([
+            'name' => $this->name,
+            'email' => $this->email,
+            'password' => Hash::make($this->password),
+            'role_id' => $this->role,
+        ]);
 
-            session()->flash('success', 'Operazione avvenuta con successo');
-            return $this->redirect('/users', navigate: true);
-        } catch (Exception $e) {
-            return back()->with('error', $e->getMessage());
-        }
+        session()->flash('success', 'Operazione avvenuta con successo');
+        return $this->redirect('/users', navigate: true);
     }
 
     public function mount()

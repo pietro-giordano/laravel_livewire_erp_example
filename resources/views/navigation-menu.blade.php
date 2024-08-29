@@ -5,19 +5,19 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="flex items-center shrink-0">
-                    <a href="{{ route('dashboard') }}">
+                    <a href="{{ route('attendances.create') }}">
                         <x-application-mark class="block w-auto h-9" />
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')" wire:navigate>
-                        {{ __('Dashboard') }}
+                    <x-nav-link href="{{ route('attendances.create') }}" :active="request()->routeIs('attendances.create')" wire:navigate>
+                        {{ __('Check-In/Out') }}
                     </x-nav-link>
 
                     @can('viewAny', App\Models\User::class)
-                        <x-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users')" wire:navigate>
+                        <x-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.*')" wire:navigate>
                             {{ __('Dipendenti') }}
                         </x-nav-link>
                     @endcan
