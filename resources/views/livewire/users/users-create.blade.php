@@ -16,10 +16,10 @@
             <div class="overflow-hidden bg-white shadow-xl dark:bg-gray-800 sm:rounded-lg">
 
                 <x-mary-form wire:submit='save' class="py-12 sm:px-12 lg:px-36">
-                    <x-mary-input label="Nome" inline wire:model.live='name' />
-                    <x-mary-input label="Email" inline wire:model.live='email' type='email' />
-                    <x-mary-input label="Password temporanea" inline wire:model.live='password' type='password' />
-                    <x-mary-input label="Conferma password temporanea" inline wire:model.live='password_confirmation' type='password' />
+                    <x-mary-input label="Nome" inline wire:model.live.blur='name' />
+                    <x-mary-input label="Email" inline wire:model.live.blur='email' type='email' />
+                    <x-mary-input label="Password temporanea" inline wire:model.live.blur='password_confirmation' type='password' />
+                    <x-mary-input label="Conferma password temporanea" inline wire:model.live.blur='password' type='password' />
                     <x-mary-select label="Ruolo aziendale" inline :options="$roles" option-value='id' option-label='name' placeholder="..." wire:model.live="role" />
 
                     <x-slot:actions>
